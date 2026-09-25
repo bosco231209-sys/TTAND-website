@@ -14,6 +14,7 @@ export function useScrollReveal(triggerKey?: unknown) {
     if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
       document.querySelectorAll<HTMLElement>('main .reveal-on-scroll').forEach((el) => {
         el.classList.add('is-revealed');
+        (el as any).__scrolledAndRevealed = true;
       });
       return;
     }
@@ -22,9 +23,11 @@ export function useScrollReveal(triggerKey?: unknown) {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('is-revealed');
+            const el = entry.target as HTMLElement;
+            el.classList.add('is-revealed');
+            (el as any).__scrolledAndRevealed = true;
             // Unobserve once revealed so it remains smoothly in place
-            observer.unobserve(entry.target);
+            observer.unobserve(el);
           }
         });
       },
@@ -44,16 +47,41 @@ export function useScrollReveal(triggerKey?: unknown) {
         // Double check not inside footer
         if (el.closest('footer')) return;
 
+        // If already flagged as revealed, ensure the class is present
+        if ((el as any).__scrolledAndRevealed) {
+          el.classList.add('is-revealed');
+          return;
+        }
+
         // If already near or within the initial viewport on page load (e.g. Hero section),
         // reveal immediately with zero delay
         const rect = el.getBoundingClientRect();
         if (rect.top <= viewportHeight * 0.92) {
           el.classList.add('is-revealed');
+          (el as any).__scrolledAndRevealed = true;
         } else {
           observer.observe(el);
         }
       });
     };
+
+    // A MutationObserver to preserve the .is-revealed class if React removes it during dynamic re-renders (e.g. hover state changes)
+    const mutationObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          const el = mutation.target as HTMLElement;
+          if ((el as any).__scrolledAndRevealed && !el.classList.contains('is-revealed')) {
+            el.classList.add('is-revealed');
+          }
+        }
+      });
+    });
+
+    mutationObserver.observe(document.body, {
+      attributes: true,
+      subtree: true,
+      attributeFilter: ['class'],
+    });
 
     // Initial pass
     observeElements();
@@ -64,6 +92,7 @@ export function useScrollReveal(triggerKey?: unknown) {
     return () => {
       clearTimeout(timer);
       observer.disconnect();
+      mutationObserver.disconnect();
     };
   }, [triggerKey]);
 }

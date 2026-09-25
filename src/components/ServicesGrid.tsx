@@ -322,12 +322,15 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header (matching screenshot) */}
-        <div className="reveal-on-scroll text-left max-w-4xl mb-12">
+        {/* Section Header */}
+        <div className="reveal-on-scroll text-center max-w-4xl mx-auto mb-16">
+          <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#E85D04] block mb-2">
+            OUR PROMISE
+          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#0C1E3A] tracking-tight leading-tight">
             More Support. Smarter Tools. Less Administration.
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl">
+          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto">
             Technology, marketing, training, supplier partnerships and back-office services—<br className="hidden sm:inline" />
             all working together to help you run your business efficiently and spend more time selling travel.
           </p>
@@ -385,8 +388,8 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({
           })}
         </div>
 
-        {/* Left-Aligned CTA Button (matching screenshot) */}
-        <div className="reveal-on-scroll reveal-delay-200 mt-10 flex justify-start">
+        {/* Center-Aligned CTA Button */}
+        <div className="reveal-on-scroll reveal-delay-200 mt-12 flex justify-center">
           <button
             type="button"
             onClick={onOpenConsultation}

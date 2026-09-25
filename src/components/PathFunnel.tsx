@@ -34,7 +34,7 @@ export const PathFunnel: React.FC<PathFunnelProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           
           {/* Card 1: New to the Travel Industry */}
-          <div className="reveal-on-scroll reveal-delay-100 slide-up-hover bg-white rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 p-6 sm:p-7 flex flex-col justify-between group relative overflow-hidden border-t-4 border-t-[#E85D04]">
+          <div className="reveal-on-scroll reveal-delay-100 slide-up-hover bg-white rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 p-6 sm:p-7 flex flex-col justify-between group relative overflow-hidden border-t-4 border-t-transparent hover:border-t-[#E85D04]">
             <div>
               {/* Photo Header */}
               <div className="rounded-2xl overflow-hidden aspect-[16/10] mb-6 bg-slate-100 shadow-inner">
@@ -80,7 +80,7 @@ export const PathFunnel: React.FC<PathFunnelProps> = ({
           </div>
 
           {/* Card 2: Experienced Travel Advisor */}
-          <div className="reveal-on-scroll reveal-delay-200 slide-up-hover bg-white rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 p-6 sm:p-7 flex flex-col justify-between group relative overflow-hidden">
+          <div className="reveal-on-scroll reveal-delay-200 slide-up-hover bg-white rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 p-6 sm:p-7 flex flex-col justify-between group relative overflow-hidden border-t-4 border-t-transparent hover:border-t-[#E85D04]">
             <div>
               {/* Photo Header */}
               <div className="rounded-2xl overflow-hidden aspect-[16/10] mb-6 bg-slate-100 shadow-inner">
@@ -126,7 +126,7 @@ export const PathFunnel: React.FC<PathFunnelProps> = ({
           </div>
 
           {/* Card 3: Agency or Team */}
-          <div className="reveal-on-scroll reveal-delay-300 slide-up-hover bg-white rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 p-6 sm:p-7 flex flex-col justify-between group relative overflow-hidden">
+          <div className="reveal-on-scroll reveal-delay-300 slide-up-hover bg-white rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl transition-all duration-300 p-6 sm:p-7 flex flex-col justify-between group relative overflow-hidden border-t-4 border-t-transparent hover:border-t-[#E85D04]">
             <div>
               {/* Photo Header */}
               <div className="rounded-2xl overflow-hidden aspect-[16/10] mb-6 bg-slate-100 shadow-inner">

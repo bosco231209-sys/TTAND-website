@@ -4,6 +4,7 @@ import advisorAsianFemaleImg from '../assets/images/advisor_asian_female_1790254
 import advisorBlackMaleImg from '../assets/images/advisor_black_male_1790254429687.jpg';
 import advisorBrunetteFemaleImg from '../assets/images/advisor_brunette_female_1790254448845.jpg';
 import teamAdvisorImg from '../assets/images/advisor_community_team_1790252499186.jpg';
+import { AnimatedCounter } from './AnimatedCounter';
 
 // Bespoke Orange Double Quotation Mark (matching the screenshot exactly)
 const OrangeQuoteMark: React.FC = () => (
@@ -85,13 +86,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
     if (hoverTimerRef.current) {
       clearInterval(hoverTimerRef.current);
     }
-    // Slide immediately on hover
-    if (direction === 'next') {
-      nextSlide();
-    } else {
-      prevSlide();
-    }
-    // Keep sliding continuously while hovering
+    // Keep sliding continuously while hovering (no immediate slide on hover enter to prevent double-firing with click)
     hoverTimerRef.current = window.setInterval(() => {
       if (direction === 'next') {
         nextSlide();
@@ -192,6 +187,8 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
           {/* Peeking Left Card (Previous) */}
           <div 
             onClick={prevSlide}
+            onMouseEnter={() => handleArrowMouseEnter('prev')}
+            onMouseLeave={handleArrowMouseLeave}
             aria-label="Previous Testimonial"
             className="hidden lg:block w-36 sm:w-52 h-[340px] shrink-0 rounded-2xl overflow-hidden shadow-md opacity-60 hover:opacity-85 transition-all duration-300 transform -translate-x-6 scale-90 cursor-pointer select-none"
           >
@@ -202,59 +199,68 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
             />
           </div>
 
-          {/* Primary Center Testimonial Showcase Card (matching screenshot) */}
+          {/* Primary Center Testimonial Showcase Card (matching screenshot with smooth sliding track) */}
           <div className="slide-up-hover w-full max-w-3xl lg:max-w-3xl bg-white border border-slate-200/90 rounded-2xl sm:rounded-3xl shadow-xl overflow-hidden relative z-10 transition-all duration-300">
-            <div className="grid grid-cols-1 sm:grid-cols-12 min-h-[360px]">
-              
-              {/* Left Photo Column */}
-              <div className="sm:col-span-5 relative bg-slate-100 min-h-[260px] sm:min-h-full">
-                <img
-                  src={activeTestimonial.image}
-                  alt={activeTestimonial.alt}
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover object-center absolute inset-0 transition-opacity duration-300"
-                />
-              </div>
+            <div 
+              className="w-full flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {TESTIMONIALS_DATA.map((testimonial) => (
+                <div 
+                  key={testimonial.id}
+                  className="w-full shrink-0 grid grid-cols-1 sm:grid-cols-12 min-h-[360px]"
+                >
+                  {/* Left Photo Column */}
+                  <div className="sm:col-span-5 relative bg-slate-100 min-h-[260px] sm:min-h-full">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.alt}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover object-center absolute inset-0"
+                    />
+                  </div>
 
-              {/* Right Quote & Details Column */}
-              <div className="sm:col-span-7 p-6 sm:p-8 lg:p-10 flex flex-col justify-between text-left">
-                <div>
-                  {/* Big Orange Quote Icon */}
-                  <OrangeQuoteMark />
+                  {/* Right Quote & Details Column */}
+                  <div className="sm:col-span-7 p-6 sm:p-8 lg:p-10 flex flex-col justify-between text-left">
+                    <div>
+                      {/* Big Orange Quote Icon */}
+                      <OrangeQuoteMark />
 
-                  {/* Main Testimonial Quote */}
-                  <p className="text-sm sm:text-base lg:text-[17px] font-semibold text-[#0C1E3A] leading-relaxed">
-                    "{activeTestimonial.quote}"
-                  </p>
+                      {/* Main Testimonial Quote */}
+                      <p className="text-sm sm:text-base lg:text-[17px] font-semibold text-[#0C1E3A] leading-relaxed">
+                        "{testimonial.quote}"
+                      </p>
+                    </div>
+
+                    {/* Author Information */}
+                    <div className="mt-6 pt-4 border-t border-slate-100">
+                      <h4 className="text-base sm:text-lg font-bold text-[#0C1E3A]">
+                        {testimonial.name}
+                      </h4>
+                      <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+                        {testimonial.role}
+                      </p>
+
+                      <button
+                        type="button"
+                        onClick={onOpenStoriesModal}
+                        className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-blue-600 hover:text-blue-700 mt-3 transition cursor-pointer"
+                      >
+                        <span>Read Their Story</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
-
-                {/* Author Information */}
-                <div className="mt-6 pt-4 border-t border-slate-100">
-                  <h4 className="text-base sm:text-lg font-bold text-[#0C1E3A]">
-                    {activeTestimonial.name}
-                  </h4>
-                  <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-                    {activeTestimonial.role}
-                  </p>
-
-                  <button
-                    type="button"
-                    onClick={onOpenStoriesModal}
-                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-blue-600 hover:text-blue-700 mt-3 transition cursor-pointer"
-                  >
-                    <span>Read Their Story</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-
-              </div>
-
+              ))}
             </div>
           </div>
 
           {/* Peeking Right Card (Next) */}
           <div 
             onClick={nextSlide}
+            onMouseEnter={() => handleArrowMouseEnter('next')}
+            onMouseLeave={handleArrowMouseLeave}
             aria-label="Next Testimonial"
             className="hidden lg:block w-36 sm:w-52 h-[340px] shrink-0 rounded-2xl overflow-hidden shadow-md opacity-60 hover:opacity-85 transition-all duration-300 transform translate-x-6 scale-90 cursor-pointer select-none"
           >
@@ -315,7 +321,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
             {/* Metric 1: 1,600+ Agent Partners */}
             <div className="slide-up-hover-sm py-4 sm:py-2 px-4 rounded-xl">
               <div className="text-3xl sm:text-4xl font-extrabold text-[#0C1E3A] tracking-tight">
-                1,600+
+                <AnimatedCounter target={1600} suffix="+" />
               </div>
               <div className="text-xs sm:text-sm font-medium text-slate-600 mt-1">
                 Agent Partners
@@ -324,8 +330,9 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
 
             {/* Metric 2: 10+ Years of Trusted Growth */}
             <div className="slide-up-hover-sm py-4 sm:py-2 px-4 rounded-xl">
-              <div className="text-3xl sm:text-4xl font-extrabold text-[#0C1E3A] tracking-tight">
-                10+ <span className="text-2xl sm:text-3xl font-bold">Years</span>
+              <div className="text-3xl sm:text-4xl font-extrabold text-[#0C1E3A] tracking-tight flex items-baseline justify-center gap-1">
+                <AnimatedCounter target={10} suffix="+" />
+                <span className="text-2xl sm:text-3xl font-bold">Years</span>
               </div>
               <div className="text-xs sm:text-sm font-medium text-slate-600 mt-1">
                 of Trusted Growth
@@ -335,7 +342,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
             {/* Metric 3: 70+ Support-Team Specialists */}
             <div className="slide-up-hover-sm py-4 sm:py-2 px-4 rounded-xl">
               <div className="text-3xl sm:text-4xl font-extrabold text-[#0C1E3A] tracking-tight">
-                70+
+                <AnimatedCounter target={70} suffix="+" />
               </div>
               <div className="text-xs sm:text-sm font-medium text-slate-600 mt-1">
                 Support-Team Specialists
@@ -345,7 +352,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
             {/* Metric 4: 600+ New-to-Industry Graduates */}
             <div className="slide-up-hover-sm py-4 sm:py-2 px-4 rounded-xl">
               <div className="text-3xl sm:text-4xl font-extrabold text-[#0C1E3A] tracking-tight">
-                600+
+                <AnimatedCounter target={600} suffix="+" />
               </div>
               <div className="text-xs sm:text-sm font-medium text-slate-600 mt-1">
                 New-to-Industry Graduates
