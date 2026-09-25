@@ -2,16 +2,20 @@
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <!-- Trailing slash redirect for GitHub Pages to ensure relative paths load correctly -->
+    <!-- Trailing slash redirect for GitHub Pages/relative path deployments to ensure relative assets load correctly -->
     <script>
       (function() {
-        const path = window.location.pathname;
+        const pathname = window.location.pathname;
         if (
-          window.location.hostname.includes('.github.io') &&
-          !path.endsWith('/') &&
-          !path.split('/').pop().includes('.')
+          !pathname.endsWith('/') &&
+          !pathname.split('/').pop().includes('.')
         ) {
-          window.location.replace(window.location.href + '/');
+          const search = window.location.search;
+          const hash = window.location.hash;
+          const newUrl = window.location.protocol + '//' + window.location.hostname + 
+            (window.location.port ? ':' + window.location.port : '') + 
+            pathname + '/' + search + hash;
+          window.location.replace(newUrl);
         }
       })();
     </script>

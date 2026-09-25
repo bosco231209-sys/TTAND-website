@@ -8,10 +8,9 @@ export default defineConfig(() => {
   const isGithubActions = !!repoEnv;
   const repoName = isGithubActions && repoEnv ? repoEnv.split('/')[1] : '';
   
-  // If the repository name is "username.github.io", it's a user/org page hosted at the root (https://username.github.io/)
-  // and the base path must be '/' instead of '/username.github.io/'
-  const isUserPage = repoName.toLowerCase().endsWith('.github.io');
-  const base = isGithubActions ? (isUserPage ? '/' : `/${repoName}/`) : './';
+  // Relative paths are the most robust and portable build target for GitHub Pages,
+  // custom domains, and local subfolders alike when paired with a trailing-slash redirect.
+  const base = './';
 
   return {
     base,
