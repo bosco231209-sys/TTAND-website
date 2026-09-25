@@ -7,7 +7,11 @@ export default defineConfig(() => {
   const repoEnv = process.env.GITHUB_REPOSITORY;
   const isGithubActions = !!repoEnv;
   const repoName = isGithubActions && repoEnv ? repoEnv.split('/')[1] : '';
-  const base = isGithubActions ? `/${repoName}/` : './';
+  
+  // If the repository name is "username.github.io", it's a user/org page hosted at the root (https://username.github.io/)
+  // and the base path must be '/' instead of '/username.github.io/'
+  const isUserPage = repoName.toLowerCase().endsWith('.github.io');
+  const base = isGithubActions ? (isUserPage ? '/' : `/${repoName}/`) : './';
 
   return {
     base,
