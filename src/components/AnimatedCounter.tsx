@@ -2,14 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 
 interface AnimatedCounterProps {
   target: number;
-  duration?: number; // duration in milliseconds (default is 3000ms as requested)
+  duration?: number; // duration in milliseconds (default is 2000ms as requested)
   suffix?: string;
   prefix?: string;
 }
 
 export const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
   target,
-  duration = 3000,
+  duration = 2000,
   suffix = '',
   prefix = ''
 }) => {
