@@ -4,13 +4,14 @@ import path from 'path';
 import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
-  const repoEnv = process.env.GITHUB_REPOSITORY;
-  const isGithubActions = !!repoEnv;
-  const repoName = isGithubActions && repoEnv ? repoEnv.split('/')[1] : '';
-  
-  // Relative paths are the most robust and portable build target for GitHub Pages,
-  // custom domains, and local subfolders alike when paired with a trailing-slash redirect.
-  const base = './';
+  // Use VITE_BASE_PATH dynamically supplied by GitHub Actions' configure-pages API,
+  // ensuring correct root/subpath resolution for custom domains and standard subpaths alike.
+  let base = process.env.VITE_BASE_PATH;
+  if (base === undefined) {
+    base = './'; // local/dev fallback
+  } else if (base === '') {
+    base = '/'; // root domain normalization
+  }
 
   return {
     base,
