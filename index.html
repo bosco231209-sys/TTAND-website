@@ -2,6 +2,19 @@
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
+    <!-- Trailing slash redirect for GitHub Pages to ensure relative paths load correctly -->
+    <script>
+      (function() {
+        const path = window.location.pathname;
+        if (
+          window.location.hostname.includes('.github.io') &&
+          !path.endsWith('/') &&
+          !path.split('/').pop().includes('.')
+        ) {
+          window.location.replace(window.location.href + '/');
+        }
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="./logo.svg" />
     <title>The Travel Agent Next Door | Canada's Leading Host Travel Agency</title>
