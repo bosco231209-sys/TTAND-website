@@ -1,0 +1,6 @@
+{
+  "name": "The Travel Agent Next Door",
+  "description": "Canada's leading host agency for new and experienced travel advisors and agencies. Start, grow or scale your travel business with industry-leading technology, personal support, and community.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Poppins', -apple-system, BlinkMacSystemFont, monospace;
+}
+
+@layer base {
+  :root {
+    --brand-navy-950: #08111F;
+    --brand-navy-900: #0C1E3A;
+    --brand-navy-800: #142E57;
+    --brand-navy-700: #1D3F75;
+    --brand-orange: #E85D04;
+    --brand-orange-hover: #D04F00;
+    --brand-orange-light: #FFF3EB;
+    --brand-gold: #C5A059;
+    --brand-gold-light: #F4E8D0;
+  }
+
+  *, ::before, ::after {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  html,
+  body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #1E293B;
+    background-color: #FFFFFF;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  input, button, select, textarea, optgroup {
+    font-family: inherit;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    text-wrap: balance;
+  }
+}
+
+.font-serif-luxury {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Custom scrollbar for clean aesthetics */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* ==========================================================================
+   SCROLL REVEAL (SLIDE UP ON SCROLL) & SLIDE UP HOVER SYSTEM
+   Applies to elements in all sections as you keep scrolling down the website.
+   STRICT EXCLUSION: Never applied to the footer.
+   ========================================================================== */
+
+/* Base state: displaced slightly downward and invisible */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+/* Revealed state triggered when scrolled into view */
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cascaded stagger delays for grid children & sequence items */
+.reveal-delay-75  { transition-delay: 75ms; }
+.reveal-delay-100 { transition-delay: 100ms; }
+.reveal-delay-150 { transition-delay: 150ms; }
+.reveal-delay-200 { transition-delay: 200ms; }
+.reveal-delay-250 { transition-delay: 250ms; }
+.reveal-delay-300 { transition-delay: 300ms; }
+.reveal-delay-350 { transition-delay: 350ms; }
+.reveal-delay-400 { transition-delay: 400ms; }
+.reveal-delay-500 { transition-delay: 500ms; }
+
+/* Interactive Slide-Up on Hover for cards, tiles, and boxes across all sections */
+.slide-up-hover {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease;
+  will-change: transform, box-shadow;
+}
+
+.reveal-on-scroll.is-revealed.slide-up-hover:hover,
+.slide-up-hover:hover {
+  transform: translateY(-6px) !important;
+}
+
+/* Subtle Slide-Up on Hover for smaller items, metric chips, and buttons */
+.slide-up-hover-sm {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+
+.reveal-on-scroll.is-revealed.slide-up-hover-sm:hover,
+.slide-up-hover-sm:hover {
+  transform: translateY(-3px) !important;
+}
+
+/* Accessibility: honor prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .slide-up-hover:hover,
+  .slide-up-hover-sm:hover {
+    transform: none !important;
+  }
+}
+
+/* STRICT USER REQUIREMENT: Don't use that effect on the footer */
+footer,
+footer *,
+footer .slide-up-hover,
+footer .slide-up-hover-sm,
+footer .reveal-on-scroll {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease !important;
+}
+

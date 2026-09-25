@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 96" width="380" height="96" fill="none">
+  <!-- The Travel Agent Next Door - We Cover The World -->
+  <g id="ttand-mark" transform="translate(4, 8)">
+    <!-- 1. Sun -->
+    <g id="sun">
+      <polygon points="21,11 21,3 23,11" fill="#FFB800" />
+      <polygon points="26,12 32,7 28,14" fill="#FFB800" />
+      <polygon points="28,18 36,19 28,20" fill="#FFB800" />
+      <polygon points="26,24 32,29 25,26" fill="#FFB800" />
+      <polygon points="22,26 21,34 20,26" fill="#FFB800" />
+      <polygon points="16,25 10,29 14,22" fill="#FFB800" />
+      <polygon points="14,19 6,18 14,17" fill="#FFB800" />
+      <polygon points="16,13 10,8 18,12" fill="#FFB800" />
+      <circle cx="21" cy="18" r="8" fill="#FFB800" />
+      <path d="M 21 10 A 8 8 0 0 1 29 18 A 8 8 0 0 1 21 26 A 5.8 5.8 0 0 0 21 10 Z" fill="#F57C00" />
+      <path d="M 21 11 A 7 7 0 0 0 14 18 A 7 7 0 0 0 21 25 A 7.8 7.8 0 0 1 17 18 A 7.8 7.8 0 0 1 21 11 Z" fill="#FFFFFF" opacity="0.95" />
+    </g>
+
+    <!-- 2. Palm Tree -->
+    <g id="palm">
+      <path d="M 68 38 Q 72 24 76 16" stroke="#795548" stroke-width="2.8" stroke-linecap="round" fill="none" />
+      <path d="M 76 16 Q 64 9 55 12 Q 65 16 76 16 Z" fill="#4CAF50" />
+      <path d="M 76 16 Q 71 5 78 6 Q 78 12 76 16 Z" fill="#7CB342" />
+      <path d="M 76 16 Q 84 5 91 10 Q 84 14 76 16 Z" fill="#43A047" />
+      <path d="M 76 16 Q 92 13 97 19 Q 88 21 76 16 Z" fill="#388E3C" />
+      <path d="M 76 16 Q 88 21 92 28 Q 83 25 76 16 Z" fill="#66BB6A" />
+    </g>
+
+    <!-- 3. Left Cottage (Blue) -->
+    <g id="left-cottage">
+      <polygon points="6,34 6,26 10,26 10,37" fill="#FFFFFF" stroke="#0088CC" stroke-width="2.4" stroke-linejoin="round" />
+      <polygon points="4,43 11,76 31,73 27,42" fill="#FFFFFF" stroke="#0088CC" stroke-width="2.8" stroke-linejoin="round" />
+      <polygon points="18,25 0,43 36,41" fill="#FFFFFF" stroke="#0088CC" stroke-width="2.8" stroke-linejoin="round" />
+      <g transform="rotate(-11 19 50)">
+        <rect x="14.5" y="45.5" width="9" height="9" fill="#FFFFFF" stroke="#0088CC" stroke-width="1.6" />
+        <line x1="19" y1="45.5" x2="19" y2="54.5" stroke="#0088CC" stroke-width="1.2" />
+        <line x1="14.5" y1="50" x2="23.5" y2="50" stroke="#0088CC" stroke-width="1.2" />
+      </g>
+    </g>
+
+    <!-- 4. Right Cottage (Blue) -->
+    <g id="right-cottage">
+      <polygon points="82,34 82,26 86,26 86,36" fill="#FFFFFF" stroke="#0088CC" stroke-width="2.4" stroke-linejoin="round" />
+      <polygon points="81,42 84,73 104,76 110,43" fill="#FFFFFF" stroke="#0088CC" stroke-width="2.8" stroke-linejoin="round" />
+      <polygon points="96,25 78,41 114,43" fill="#FFFFFF" stroke="#0088CC" stroke-width="2.8" stroke-linejoin="round" />
+      <g transform="rotate(11 96 50)">
+        <rect x="91.5" y="45.5" width="9" height="9" fill="#FFFFFF" stroke="#0088CC" stroke-width="1.6" />
+        <line x1="96" y1="45.5" x2="96" y2="54.5" stroke="#0088CC" stroke-width="1.2" />
+        <line x1="91.5" y1="50" x2="100.5" y2="50" stroke="#0088CC" stroke-width="1.2" />
+      </g>
+    </g>
+
+    <!-- 5. Center Cottage (Orange) -->
+    <g id="center-cottage">
+      <polygon points="40,24 40,15 45,15 45,27" fill="#FFFFFF" stroke="#F26522" stroke-width="2.6" stroke-linejoin="round" />
+      <polygon points="35,35 37,79 73,79 75,35" fill="#FFFFFF" stroke="#F26522" stroke-width="3.4" stroke-linejoin="round" />
+      <polygon points="55,11 31,35 79,35" fill="#FFFFFF" stroke="#F26522" stroke-width="3.4" stroke-linejoin="round" />
+      <rect x="49" y="24.5" width="12" height="11.5" fill="#FFFFFF" stroke="#F26522" stroke-width="1.8" />
+      <line x1="55" y1="24.5" x2="55" y2="36" stroke="#F26522" stroke-width="1.2" />
+      <line x1="49" y1="30.25" x2="61" y2="30.25" stroke="#F26522" stroke-width="1.2" />
+      <rect x="46" y="49" width="19" height="29" fill="#FFFFFF" stroke="#F26522" stroke-width="2.4" />
+      <polygon points="47,51 60,45 60,74 47,78" fill="#F26522" stroke="#D84E00" stroke-width="1.6" stroke-linejoin="round" />
+      <circle cx="56.5" cy="62" r="1.6" fill="#FDBA74" stroke="#F26522" stroke-width="0.8" />
+    </g>
+  </g>
+
+  <!-- Typography Wordmark -->
+  <g id="ttand-text" transform="translate(132, 14)">
+    <text x="0" y="10" font-family="'Playfair Display', Georgia, serif" font-size="14" fill="#0B3B70">The</text>
+    <text x="0" y="38" font-family="'Playfair Display', Georgia, serif" font-size="30" font-weight="700" fill="#0B3B70" letter-spacing="-0.02em">Travel Agent</text>
+    <text x="0" y="66" font-family="'Playfair Display', Georgia, serif" font-size="30" font-weight="700" fill="#0B3B70" letter-spacing="-0.02em">Next Door</text>
+    <text x="2" y="80" font-family="'Barlow Condensed', 'Oswald', sans-serif" font-size="14" font-weight="800" fill="#F04E23" letter-spacing="0.12em">WE COVER THE WORLD</text>
+  </g>
+</svg>
